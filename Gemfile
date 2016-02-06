@@ -35,7 +35,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'rspec-rails', '~> 2.0'
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-expectations', '~> 3.0.0'
+
+  # Support for its syntax
+  gem 'rspec-its', '~> 1.0.1'
+
+  # Support for stubbing model in view specs
+  gem 'rspec-activemodel-mocks', '~> 1.0.1'
 end
 
 group :development do
@@ -47,6 +54,6 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '~> 2.1.0'
+  gem 'capybara', '~> 2.3.0'
 end
 
