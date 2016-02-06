@@ -71,6 +71,7 @@ RSpec.configure do |config|
 
   config.expose_current_running_example_as :example
 
+# solution to update rspec from 2 to 3
   config.mock_with :rspec do |c|
     c.syntax = [:should, :expect]
   end
