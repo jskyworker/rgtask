@@ -27,7 +27,6 @@ describe "Viewing todo items" do
 
   it "displays no todo items when todo list is empty" do
   	visit_todo_list(todo_list)
-  	#expect(page).to have_content("TodoItems#index")
   	expect(page.all("ul.todo_items li").size).to eq(0)
   end
 
