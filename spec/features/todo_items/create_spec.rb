@@ -9,9 +9,7 @@ describe "Creating todo items" do
   	fill_in "Content", with: "Cow"
   	click_button "Save"
   	expect(page).to have_content("Added todo list item.")
-  	within "ul.todo_items" do
-      expect(page).to have_content("Cow")
-  	end
+    expect(page).to have_content("Cow")
   end
 
 

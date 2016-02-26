@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<% @todo_lists.each do |todo_list| %>
+<div class="todo_list" id="<%= dom_id(todo_list) %>">
+<table>
+<tr>
+  <td width="95%" bgcolor="blue"><font color="white" size="5"><%= todo_list.title %></font></td>
+  <td class="actions" bgcolor="blue">
+    <%= link_to(image_tag("edit.png", size: "26x20", alt: "Edit", title: "Edit"), edit_todo_list_path(todo_list)) %>
+    <%= link_to(image_tag("trash.png", size: "26x20", alt: "Destroy", title: "Destroy"), todo_list, method: :delete, data: { confirm: 'Are you sure?' } ) %>
+  </td>
+  </tr>
+  </table>
+  <br class="clear" />
+
+<table>
+    <thead>
+      <tr>
+        <th width="25%">Completed?</th>
+        <th width="65%">Content</th>
+        <th width="10%">Actions</th>
+      </tr>
+    </thead>
+  <% todo_list.todo_items.each do |todo_item| %>
+  <tr id="<%= dom_id(todo_item) %>">
+    <td>
+    <% if todo_item.completed? %>
+      <%= todo_item.completed_at %>
+    <% else %>
+      <%= link_to "Mark complete", complete_todo_list_todo_item_path(todo_list, todo_item), method: :patch %>
+    <% end %>
+    </td>
+    <td><%= todo_item.content %></td>
+    <td>
+    <%= link_to "Edit", edit_todo_list_todo_item_path(todo_list, todo_item) %>
+    <%= link_to "Delete", todo_list_todo_item_path(todo_list, todo_item), method: :delete, data: { confirm: "Are you sure?" } %>
+
+    </td>
+  </tr>
+  <% end %>
+  </table>
+</div>
+<% end %>
+<br>
+
+<%= link_to 'New Todo list', new_todo_list_path %>

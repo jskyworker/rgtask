@@ -1,22 +1,54 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Todo Lists</h1>
-
-
 <% @todo_lists.each do |todo_list| %>
-<div class="todo_list" id="<%= dom_id(todo_list) %>">
-  <h2><%= todo_list.title %></h2>
-  <p><%= todo_list.description %></p>
-  <p><%= todo_list.status %></p>
-  <ul class="actions">
-    <li><%= link_to "List Items", todo_list_todo_items_path(todo_list) %></li>
-    <li><%= link_to 'Show', todo_list %></li>
-    <li><%= link_to 'Edit', edit_todo_list_path(todo_list) %></li>
-    <li><%= link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-  </ul>
-  <br class="clear" />
-</div>
-<% end %>
-<br>
+  
+<center>
+<div id="<%= dom_id(todo_list) %>">
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="rTableCell">
+      <%= todo_list.title %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="rTableCell">
+      <%= link_to(image_tag("edit.png", size: "26x20", alt: "Edit", title: "Edit"), edit_todo_list_path(todo_list)) %>
+      <%= link_to(image_tag("trash.png", size: "26x20", alt: "Destroy", title: "Destroy"), todo_list, method: :delete, data: { confirm: 'Are you sure?' } ) %>
+      </div>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_tag todo_list_todo_items_path(todo_list) do %>
+          <%= text_field_tag 'todo_item[content]' %><%= submit_tag "Add task" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <% todo_list.todo_items.each do |todo_item| %>
+    <div class="col-md-4">
+      <% if todo_item.completed? %>
+        <%= todo_item.completed_at %>
+      <% else %>
+        <%= link_to "Mark complete", complete_todo_list_todo_item_path(todo_list, todo_item), method: :patch %>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= todo_item.content %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to "Edit", edit_todo_list_todo_item_path(todo_list, todo_item) %>
+      <%= link_to "Delete", todo_list_todo_item_path(todo_list, todo_item), method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
+  </div>
+  <% end %>
+
+<% end %>
+</div>
+</div>
+<br>
+</center><br>
 <%= link_to 'New Todo list', new_todo_list_path %>

@@ -1,4 +1,5 @@
 class TodoListsController < ApplicationController
+  before_action :require_user
   before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
 
   # GET /todo_lists
@@ -15,6 +16,7 @@ class TodoListsController < ApplicationController
   # GET /todo_lists/new
   def new
     @todo_list = TodoList.new
+    @todo_list.todo_items.build
   end
 
   # GET /todo_lists/1/edit
@@ -69,6 +71,6 @@ class TodoListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_list_params
-      params.require(:todo_list).permit(:title, :description, :status)
+      params.require(:todo_list).permit(:title, :description, :status, todo_items_attributes: [ :id, :todo_list_id, :content ])
     end
 end
