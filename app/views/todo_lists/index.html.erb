@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<% @todo_lists.each do |todo_list| %>
-  
 <center>
+<% @todo_lists.each do |todo_list| %>
 <div id="<%= dom_id(todo_list) %>">
-<div class="container">
+
   <div class="row">
     <div class="col-md-10">
       <div class="rTableCell">
@@ -49,6 +48,7 @@
 <% end %>
 </div>
 </div>
+</center>
 <br>
-</center><br>
-<%= link_to 'New Todo list', new_todo_list_path %>
+<br>
+<center><%= link_to 'New Todo list', new_todo_list_path %></center>

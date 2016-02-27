@@ -28,7 +28,7 @@ class TodoItemsController < ApplicationController
     @todo_item = @todo_list.todo_items.find(params[:id])
     if @todo_item.update_attributes(todo_item_params)
       flash[:success] = "Saved todo list item."
-      redirect_to todo_list_todo_items_path
+      redirect_to todo_lists_path
     else
       flash[:error] = "That todo item could not bew saved."
       render action: :new
@@ -46,7 +46,7 @@ class TodoItemsController < ApplicationController
     else
       flash[:error] = "Todo list item could not be deleted."
     end
-    redirect_to todo_list_todo_items_path
+    redirect_to todo_lists_path
   end
 
   def complete
