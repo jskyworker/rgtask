@@ -1,5 +1,3 @@
-== README
-
 # Task manager
 Can be found [here.](https://rgtask.herokuapp.com)
 It requires free registration (no email confirmation). 
@@ -11,7 +9,6 @@ It might be looking a bit weird at the moment, **be careful** with your eyes.
 Given tables:
 
 **Tasks** (id, name, status, project_id)
-
 **Projects** (id, name)
 
 Write the queries for:
