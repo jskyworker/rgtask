@@ -1,18 +1,18 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
+# Task manager
+Can be found [here.](https://rgtask.herokuapp.com)
+It requires free registration (no email confirmation).
 
 
 # SQL task
 
 ##Given tables:
 
-#Tasks (id, name, status, project_id)
-#Projects (id, name)
+###Tasks (id, name, status, project_id)
+###Projects (id, name)
 
-#Write the queries for:
+##Write the queries for:
 
 1) get all statuses, not repeating, alphabetically ordered
 ```
