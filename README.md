@@ -10,8 +10,9 @@ It might be looking a bit weird at the moment, **be careful** with your eyes.
 
 Given tables:
 
-Tasks (id, name, status, project_id)
-Projects (id, name)
+**Tasks** (id, name, status, project_id)
+
+**Projects** (id, name)
 
 Write the queries for:
 
